@@ -10,11 +10,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/drone/drone/pkg/build"
-	"github.com/drone/drone/pkg/build/docker"
-	"github.com/drone/drone/pkg/build/log"
-	"github.com/drone/drone/pkg/build/repo"
-	"github.com/drone/drone/pkg/build/script"
+	"github.com/drone/drone/build"
+	"github.com/drone/drone/build/docker"
+	"github.com/drone/drone/build/log"
+	"github.com/drone/drone/build/repo"
+	"github.com/drone/drone/build/script"
 
 	"launchpad.net/goyaml"
 )

@@ -20,7 +20,7 @@ model \
 plugin/deploy \
 plugin/publish \
 queue
-PKGS := $(addprefix github.com/drone/drone/pkg/,$(PKGS))
+PKGS := $(addprefix github.com/drone/drone/,$(PKGS))
 .PHONY := test $(PKGS)
 
 all: embed build
