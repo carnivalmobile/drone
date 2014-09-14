@@ -26,12 +26,12 @@ PKGS := $(addprefix github.com/drone/drone/pkg/,$(PKGS))
 all: embed build
 
 build:
-	go build -o bin/drone -ldflags "-X main.version $(VERSION)dev-$(SHA)" $(SELFPKG)/cmd/drone
-	go build -o bin/droned -ldflags "-X main.version $(VERSION)dev-$(SHA)" $(SELFPKG)/cmd/droned
+	go build -o bin/drone -ldflags "-X main.version $(VERSION)dev-$(SHA)" $(SELFPKG)/drone
+	go build -o bin/droned -ldflags "-X main.version $(VERSION)dev-$(SHA)" $(SELFPKG)/droned
 
 build-dist: godep
-	godep go build -o bin/drone -ldflags "-X main.version $(VERSION)-$(SHA)" $(SELFPKG)/cmd/drone
-	godep go build -o bin/droned -ldflags "-X main.version $(VERSION)-$(SHA)" $(SELFPKG)/cmd/droned
+	godep go build -o bin/drone -ldflags "-X main.version $(VERSION)-$(SHA)" $(SELFPKG)/drone
+	godep go build -o bin/droned -ldflags "-X main.version $(VERSION)-$(SHA)" $(SELFPKG)/droned
 
 bump-deps: deps vendor
 
@@ -45,11 +45,11 @@ vendor: godep
 
 # Embed static assets
 embed: js rice
-	cd cmd/droned   && rice embed
+	cd droned       && rice embed
 	cd pkg/template && rice embed
 
 js:
-	cd cmd/droned/assets && find js -name "*.js" ! -name '.*' ! -name "main.js" -exec cat {} \; > js/main.js
+	cd droned/assets && find js -name "*.js" ! -name '.*' ! -name "main.js" -exec cat {} \; > js/main.js
 
 test: $(PKGS)
 
@@ -64,11 +64,11 @@ install:
 	mkdir -p /var/lib/drone
 
 clean: rice
-	cd cmd/droned   && rice clean
+	cd droned       && rice clean
 	cd pkg/template && rice clean
-	rm -rf cmd/drone/drone
-	rm -rf cmd/droned/droned
-	rm -rf cmd/droned/drone.sqlite
+	rm -rf drone/drone
+	rm -rf droned/droned
+	rm -rf droned/drone.sqlite
 	rm -rf bin/drone
 	rm -rf bin/droned
 	rm -rf deb/drone.deb
