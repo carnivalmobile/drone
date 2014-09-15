@@ -20,7 +20,6 @@ deps:
 	go get -u -t -v ./...
 
 vendor: godep
-	git submodule update --init --recursive
 	godep save ./...
 
 # Embed static assets
