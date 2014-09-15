@@ -4,9 +4,10 @@ import (
 	"strings"
 	"testing"
 
+	"launchpad.net/goyaml"
+
 	"github.com/drone/drone/build/buildfile"
 	"github.com/drone/drone/build/repo"
-	"gopkg.in/v1/yaml"
 )
 
 type PublishToDrone struct {
@@ -15,7 +16,7 @@ type PublishToDrone struct {
 
 func setUpWithDrone(input string) (string, error) {
 	var buildStruct PublishToDrone
-	err := yaml.Unmarshal([]byte(input), &buildStruct)
+	err := goyaml.Unmarshal([]byte(input), &buildStruct)
 	if err != nil {
 		return "", err
 	}

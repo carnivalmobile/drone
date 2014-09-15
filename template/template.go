@@ -94,7 +94,7 @@ func init() {
 		panic(err)
 	}
 
-	assets := rice.MustFindBox("../../droned/assets")
+	assets := rice.MustFindBox("../droned/assets")
 	mainjs, err := assets.String("js/main.js")
 	if err != nil {
 		panic(err)
