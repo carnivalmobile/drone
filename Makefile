@@ -42,11 +42,10 @@ vendor: godep
 	git submodule update --init --recursive
 	godep save ./...
 
-
 # Embed static assets
 embed: js rice
-	cd droned       && rice embed
-	cd pkg/template && rice embed
+	cd droned   && rice embed
+	cd template && rice embed
 
 js:
 	cd droned/assets && find js -name "*.js" ! -name '.*' ! -name "main.js" -exec cat {} \; > js/main.js
@@ -64,8 +63,8 @@ install:
 	mkdir -p /var/lib/drone
 
 clean: rice
-	cd droned       && rice clean
-	cd pkg/template && rice clean
+	cd droned   && rice clean
+	cd template && rice clean
 	rm -rf drone/drone
 	rm -rf droned/droned
 	rm -rf droned/drone.sqlite
