@@ -2,26 +2,7 @@ SELFPKG := github.com/drone/drone
 VERSION := 0.2
 SHA := $(shell git rev-parse --short HEAD)
 BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
-PKGS := \
-build \
-build/buildfile \
-build/docker \
-build/dockerfile \
-build/proxy \
-build/repo \
-build/script \
-channel \
-database \
-database/encrypt \
-database/migrate/testing \
-database/testing \
-mail \
-model \
-plugin/deploy \
-plugin/publish \
-queue
-PKGS := $(addprefix github.com/drone/drone/,$(PKGS))
-.PHONY := test $(PKGS)
+.PHONY := test
 
 all: embed build
 
@@ -50,10 +31,8 @@ embed: js rice
 js:
 	cd droned/assets && find js -name "*.js" ! -name '.*' ! -name "main.js" -exec cat {} \; > js/main.js
 
-test: $(PKGS)
-
-$(PKGS): godep
-	godep go test -v $@
+test:
+	godep go test -v ./...
 
 install:
 	cp deb/drone/etc/init/drone.conf /etc/init/drone.conf
