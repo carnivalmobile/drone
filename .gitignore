@@ -8,8 +8,8 @@ drone.sublime-workspace
 
 bin/drone
 bin/droned
-cmd/drone/drone
-cmd/droned/droned
+drone/drone
+droned/droned
 deb/drone/usr/local/bin/drone
 deb/drone/usr/local/bin/droned
 
