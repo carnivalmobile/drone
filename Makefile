@@ -1,4 +1,4 @@
-SELFPKG := github.com/drone/drone
+SELFPKG := github.com/carnivalmobile/drone
 VERSION := 0.2
 SHA := $(shell git rev-parse --short HEAD)
 BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
